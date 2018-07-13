@@ -27,7 +27,6 @@ class App extends Component {
     this.clearResult = this.clearResult.bind(this);
     this.findSum = this.findSum.bind(this);
   }
-  //static displayName = "Hi";
   addChar(char) { //for adding number or operator to the lastResult
     const numbers = ['7','8','9','4','5','6','1','2','3','0','.'];
     const operators = ['/','*','+','-','.'];
@@ -49,19 +48,11 @@ class App extends Component {
       alert('number is too large to display');
       this.setState({result: 'No. is too large'});
     }
-    //console.log(this.state.result);
     const {equals} = this.state;
-    //console.log(equals);
     if(equals) {    
-      //console.log('equals inside if', equals);
-      //console.log('last char', lastChar);
-      //console.log('you press ', char);
-      //console.log('result ', this.state.result);
       if(operators.indexOf(char) > 0) {  //if operator is enterd 
-        //console.log('indexof',operators.indexOf(char)>0);
-        //console.log('you press some operators');
-        this.setState({ result: lastResult + char }); // add the operator to the previous value
-        //console.log('~~~~~~ last result ~~~~~~~~~~~~~',lastResult+char);
+        this.setState({ result: lastResult + char }); 
+        this.setState({equals: false});
       }
       else{
         this.setState({result: char}); //if new number is entered erase the previous value
@@ -90,7 +81,6 @@ class App extends Component {
     if(equals===false){
       let sum = eval(this.state.result).toString();//perform eval funtion each time= is prssed
       this.setState({ result: sum });
-      //console.log(equals);
       this.setState({equals: true});
     }
   }
